@@ -34,3 +34,4 @@
 {"client_ip":"127.0.0.1","level":"info","msg":"","req_method":"GET","req_uri":"/ws/chat?uid=1\u0026touid=2","status_code":200,"time":"2024-03-18 21:25:48"}
 {"client_ip":"127.0.0.1","level":"info","msg":"","req_method":"GET","req_uri":"/ws/chat?uid=1\u0026touid=2","status_code":200,"time":"2024-03-18 21:34:12"}
 {"client_ip":"127.0.0.1","level":"info","msg":"","req_method":"GET","req_uri":"/ws/chat?uid=2\u0026touid=1","status_code":200,"time":"2024-03-18 21:34:18"}
+{"client_ip":"127.0.0.1","level":"info","msg":"","req_method":"GET","req_uri":"/ws/chat?uid=1\u0026touid=2","status_code":200,"time":"2024-03-18 21:39:43"}
