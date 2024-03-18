@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h2 {
+            color: #333;
+            text-decoration: underline;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input, button {
+            width: calc(100% - 22px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 10px;
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+<h2>用户注册</h2>
+<form action="/login/register" id="registrationForm" method="post">
+    <div>
+        <label for="username">姓名:</label>
+        <input id="username" name="username" required type="text">
+    </div>
+    <div>
+        <label for="password">密码:</label>
+        <input id="password" name="password" required type="password">
+    </div>
+    <div>
+        <label for="rePassword">再次输入密码:</label>
+        <input id="rePassword" name="rePassword" required type="password">
+    </div>
+    <button type="submit">注册</button>
+</form>
+</body>
+</html>
