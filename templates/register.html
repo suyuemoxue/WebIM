@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>用户注册</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,7 +56,7 @@
 </head>
 <body>
 <h2>用户注册</h2>
-<form action="/login/register" id="registrationForm" method="post">
+<form id="registerForm">
     <div>
         <label for="username">姓名:</label>
         <input id="username" name="username" required type="text">
@@ -68,7 +69,36 @@
         <label for="rePassword">再次输入密码:</label>
         <input id="rePassword" name="rePassword" required type="password">
     </div>
-    <button type="submit">注册</button>
+    <a href="login">返回登录界面</a>
+    <button type="submit">确认注册</button>
 </form>
+<script>
+    // 监听表单提交事件
+    document.querySelector('#registerForm').addEventListener('submit', async (event)=>{
+        event.preventDefault();// 阻止表单默认提交行为
+        // 获取姓名、密码和再次输入密码的值
+        const username = document.querySelector('#username').value;
+        const password = document.querySelector('#password').value;
+        const rePassword = document.querySelector('#rePassword').value;
+        // 创建包含姓名、密码的JSON对象
+        const data = {
+            username: username,
+            password: password,
+            rePassword: rePassword
+        };
+        // 发送POST请求到后端
+        try {
+            const response = await axios.post('http://127.0.0.1:8080/login/register', data);
+            if(response.status === 200 && response.data.msg !== "注册成功") alert(response.data.msg)
+            if(response.status === 200 && response.data.msg === "注册成功"){
+                alert(response.data.msg)
+                window.location.href = "login"
+            }
+        }catch (error){
+            console.error('Error:', error);
+            alert("无法从服务器获取数据");
+        }
+    });
+</script>
 </body>
 </html>

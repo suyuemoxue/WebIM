@@ -15,7 +15,7 @@ go get -u github.com/gin-gonic/gin
 ### Gorm 框架下载
 
 ```
- go get -u gorm.io/gorm
+go get -u gorm.io/gorm
 ```
 
 ```

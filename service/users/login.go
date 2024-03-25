@@ -28,7 +28,7 @@ func (ls *LoginService) Login(context *gin.Context) {
 	}
 	// 判断用户名是否存在
 	if !user.CheckUserExists("name", login.UserName) {
-		context.JSON(-1, global.Response{
+		context.JSON(http.StatusOK, global.Response{
 			Code: -1,
 			Data: nil,
 			Msg:  "该用户名不存在",
@@ -37,7 +37,7 @@ func (ls *LoginService) Login(context *gin.Context) {
 	}
 	// 判断密码是否正确
 	if !user.CheckPasswordByUsername(login.UserName, login.Password) {
-		context.JSON(-1, global.Response{
+		context.JSON(http.StatusOK, global.Response{
 			Code: -1,
 			Data: nil,
 			Msg:  "密码错误，请重新输入",
@@ -60,7 +60,7 @@ func (ls *LoginService) Register(context *gin.Context) {
 	register := users.RegisterReceiveStruct{}
 	// 检查是否缺少数据
 	if err := context.ShouldBind(&register); err != nil {
-		context.JSON(-1, global.Response{
+		context.JSON(http.StatusOK, global.Response{
 			Code: -1,
 			Data: register,
 			Msg:  "请检查是否缺少数据",
@@ -69,7 +69,7 @@ func (ls *LoginService) Register(context *gin.Context) {
 	}
 	// 检查两次密码是否一致
 	if register.Password != register.RePassword {
-		context.JSON(-1, global.Response{
+		context.JSON(http.StatusOK, global.Response{
 			Code: -1,
 			Data: nil,
 			Msg:  "两次密码不一致，请重新输入",
@@ -78,7 +78,7 @@ func (ls *LoginService) Register(context *gin.Context) {
 	}
 	// 检查用户名是否已存在
 	if user.CheckUserExists("name", register.UserName) {
-		context.JSON(-1, global.Response{
+		context.JSON(http.StatusOK, global.Response{
 			Code: -1,
 			Data: nil,
 			Msg:  "该用户名已存在，无需注册",
@@ -102,7 +102,7 @@ func (ls *LoginService) Register(context *gin.Context) {
 		return
 	}
 	if !user.CreateUser() {
-		context.JSON(-1, global.Response{
+		context.JSON(http.StatusOK, global.Response{
 			Code: -1,
 			Data: nil,
 			Msg:  "注册失败",

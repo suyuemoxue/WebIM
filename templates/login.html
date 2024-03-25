@@ -6,51 +6,95 @@
     <title>Login</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-        }
-
-        form {
             background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
         }
 
-        input {
-            margin: 10px;
-            padding: 10px;
-            width: 200px;
-            border: 1px solid #ddd;
+        #login {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
             border-radius: 5px;
+            background-color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        button {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
         }
 
         button {
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #337ab7;
-            color: #fff;
+            background-color: #4CAF50;
+            color: white;
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: #4CAF50;
+        }
+        /* 样式可以根据需要自行调整 */
+        input[type="text"]::placeholder,
+        input[type="password"]::placeholder {
+            color: #999;
+        }
+        input[type="text"].hidden-label,
+        input[type="password"].hidden-label {
+            color: transparent;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-<form>
+<form id="login">
     <h2>Login</h2>
-    <input placeholder="Username" type="text">
+    <input id="username" type="text" placeholder="请输入用户名">
     <br>
-    <input placeholder="Password" type="password">
+    <input id="password" type="password" placeholder="请输入密码">
     <br>
-    <button type="submit">Submit</button>
+    <button type="submit">确认登录</button>
     <br>
-    <a href="register.html">Go to Register Page</a>
+    <a href="register">去注册</a>
 </form>
+<script>
+    document.querySelector("#login").addEventListener("submit", async (event) => {
+        event.preventDefault(); // 阻止默认表单提交行为
+        const username = document.querySelector('#username').value;
+        const password = document.querySelector('#password').value;
+        try {
+            const response = await axios.post('http://127.0.0.1:8080/login/login', { username, password });
+            if (response.status === 200 && response.data.msg !== "登录成功") {
+                alert(response.data.msg); // 打印从服务器接收到的数据
+            }else {
+                alert(response.data.msg);
+                window.location.href = "chat"
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert("无法从服务器获取数据");
+        }
+    });
+</script>
 </body>
 </html>

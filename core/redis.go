@@ -24,16 +24,3 @@ func InitRedis() {
 	}
 	log.Println("redis connect success,", pong)
 }
-
-// Publish 发布消息到Redis
-func Publish(ctx context.Context, channel string, msg string) error {
-	err := global.RDB.Publish(ctx, channel, msg).Err()
-	return err
-}
-
-// Subscribe 订阅Redis
-func Subscribe(ctx context.Context, channel string) (string, error) {
-	sub := global.RDB.PSubscribe(ctx, channel)
-	msg, err := sub.ReceiveMessage(ctx)
-	return msg.Payload, err
-}
