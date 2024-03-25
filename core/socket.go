@@ -1,7 +1,7 @@
 package core
 
 import (
-	"CopyQQ/service/ws"
+	"WebIM/service/ws"
 )
 
 func InitSocket() {

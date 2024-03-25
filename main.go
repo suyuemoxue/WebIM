@@ -1,8 +1,8 @@
 package main
 
 import (
-	"CopyQQ/core"
-	"CopyQQ/routers"
+	"WebIM/core"
+	"WebIM/routers"
 )
 
 func main() {

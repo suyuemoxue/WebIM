@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Login</title>
+    <title>用户注册</title>
     <style>
         body {
             display: flex;
@@ -14,7 +14,7 @@
             background-color: #f4f4f4;
         }
 
-        #login {
+        #registerForm {
             width: 300px;
             padding: 20px;
             border: 1px solid #ccc;
@@ -26,7 +26,6 @@
             text-align: center;
             color: #333;
         }
-
         input[type="text"],
         input[type="password"],
         button {
@@ -35,7 +34,6 @@
             margin: 5px 0;
             box-sizing: border-box;
         }
-
         button {
             background-color: #4CAF50;
             color: white;
@@ -43,54 +41,53 @@
             border-radius: 4px;
             cursor: pointer;
         }
-
         button:hover {
             background-color: #45a049;
         }
-
         a {
             display: block;
             text-align: center;
             text-decoration: none;
             color: #4CAF50;
         }
-        /* 样式可以根据需要自行调整 */
-        input[type="text"]::placeholder,
-        input[type="password"]::placeholder {
-            color: #999;
-        }
-        input[type="text"].hidden-label,
-        input[type="password"].hidden-label {
-            color: transparent;
-        }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-<form id="login">
-    <h2>Login</h2>
-    <input id="username" type="text" placeholder="请输入用户名">
+<form id="registerForm">
+    <h2>用户注册</h2>
+    <input id="username" name="username" type="text" placeholder="请输入用户名" required>
     <br>
-    <input id="password" type="password" placeholder="请输入密码">
+    <input id="password" name="password" type="password" placeholder="请输入密码" required>
     <br>
-    <button type="submit">确认登录</button>
+    <input id="rePassword" name="rePassword" type="password" placeholder="请再次输入密码" required>
     <br>
-    <a href="register">去注册</a>
+    <button type="submit">确认注册</button>
+    <a href="login">返回登录界面</a>
 </form>
 <script>
-    document.querySelector("#login").addEventListener("submit", async (event) => {
-        event.preventDefault(); // 阻止默认表单提交行为
+    // 监听表单提交事件
+    document.querySelector('#registerForm').addEventListener('submit', async (event)=>{
+        event.preventDefault();// 阻止表单默认提交行为
+        // 获取姓名、密码和再次输入密码的值
         const username = document.querySelector('#username').value;
         const password = document.querySelector('#password').value;
+        const rePassword = document.querySelector('#rePassword').value;
+        // 创建包含姓名、密码的JSON对象
+        const data = {
+            username: username,
+            password: password,
+            rePassword: rePassword
+        };
+        // 发送POST请求到后端
         try {
-            const response = await axios.post('http://127.0.0.1:8080/login/login', { username, password });
-            if (response.status === 200 && response.data.msg !== "登录成功") {
-                alert(response.data.msg); // 打印从服务器接收到的数据
-            }else {
-                alert(response.data.msg);
-                window.location.href = "chat"
+            const response = await axios.post('http://127.0.0.1:8080/login/register', data);
+            if(response.status === 200 && response.data.msg !== "注册成功") alert(response.data.msg)
+            if(response.status === 200 && response.data.msg === "注册成功"){
+                alert(response.data.msg)
+                window.location.href = "login"
             }
-        } catch (error) {
+        }catch (error){
             console.error('Error:', error);
             alert("无法从服务器获取数据");
         }

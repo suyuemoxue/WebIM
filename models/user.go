@@ -1,8 +1,8 @@
 package models
 
 import (
-	"CopyQQ/global"
-	"CopyQQ/utils"
+	"WebIM/global"
+	"WebIM/utils"
 	"fmt"
 	"gorm.io/gorm"
 	"time"

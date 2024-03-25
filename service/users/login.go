@@ -1,10 +1,10 @@
 package users
 
 import (
-	"CopyQQ/global"
-	"CopyQQ/global/receive/users"
-	"CopyQQ/models"
-	"CopyQQ/utils"
+	"WebIM/global"
+	"WebIM/global/receive/users"
+	"WebIM/models"
+	"WebIM/utils"
 	"github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
 	"math/rand"

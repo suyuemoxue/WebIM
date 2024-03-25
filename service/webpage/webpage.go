@@ -1,7 +1,7 @@
 package webpage
 
 import (
-	"CopyQQ/global"
+	"WebIM/global"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -27,4 +27,8 @@ func (wps *WpService) GetRegister(context *gin.Context) {
 
 func (wps *WpService) GetChat(context *gin.Context) {
 	context.HTML(http.StatusOK, "chat.html", global.Response{})
+}
+
+func (wps *WpService) GetIco(context *gin.Context) {
+	context.File("favicon.ico")
 }

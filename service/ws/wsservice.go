@@ -1,8 +1,8 @@
 package ws
 
 import (
-	"CopyQQ/global"
-	"CopyQQ/models"
+	"WebIM/global"
+	"WebIM/models"
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/websocket"

@@ -1,7 +1,7 @@
 package webpage
 
 import (
-	"CopyQQ/service/webpage"
+	"WebIM/service/webpage"
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,6 +12,7 @@ func (wpr *RouterGroup) InitWebPageRouter(router *gin.RouterGroup) {
 	pageRouter := router.Group("")
 	{
 		wpService := webpage.WpService{}
+		pageRouter.GET("//favicon.ico", wpService.GetIco)
 		pageRouter.GET("/index", wpService.GetIndex)
 		pageRouter.GET("/login", wpService.GetLogin)
 		pageRouter.GET("/register", wpService.GetRegister)

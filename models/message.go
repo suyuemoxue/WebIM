@@ -1,7 +1,7 @@
 package models
 
 import (
-	"CopyQQ/global"
+	"WebIM/global"
 	"gorm.io/gorm"
 )
 

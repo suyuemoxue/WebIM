@@ -1,7 +1,7 @@
 package core
 
 import (
-	"CopyQQ/global"
+	"WebIM/global"
 	"fmt"
 	"github.com/spf13/viper"
 	"log"

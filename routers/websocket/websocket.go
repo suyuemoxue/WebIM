@@ -1,7 +1,7 @@
 package websocket
 
 import (
-	"CopyQQ/service/ws"
+	"WebIM/service/ws"
 	"github.com/gin-gonic/gin"
 )
 

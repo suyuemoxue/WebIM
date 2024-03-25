@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟微信界面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .chat-container {
+            width: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .chat-messages {
+            height: 300px;
+            overflow-y: scroll;
+            border-bottom: 1px solid #ccc;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 5px;
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 5px 10px;
+        }
+
+    </style>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div class="chat-container" id="chatContainer">
+    <div class="chat-messages" id="chatMessages"></div>
+    <input type="text" placeholder="输入消息..." id="chatInput">
+    <button onclick="sendMessage()">发送</button>
+</div>
+<script>
+    function sendMessage() {
+        const messageInput = document.getElementById('chatInput');
+        const message = messageInput.value;
+        if (message.trim() === '') {
+            alert('请输入消息');
+            return;
+        }
+        const chatMessages = document.getElementById('chatMessages');
+        const newMessage = document.createElement('div');
+        newMessage.textContent = message;
+        newMessage.classList.add('message');
+        chatMessages.appendChild(newMessage);
+        messageInput.value = '';
+    }
+</script>
+</body>
+</html>

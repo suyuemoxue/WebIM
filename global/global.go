@@ -1,7 +1,7 @@
 package global
 
 import (
-	"CopyQQ/config"
+	"WebIM/config"
 	"context"
 	"github.com/go-redis/redis/v8"
 	"gorm.io/gorm"

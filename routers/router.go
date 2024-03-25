@@ -1,11 +1,11 @@
 package routers
 
 import (
-	"CopyQQ/global"
-	"CopyQQ/middlewares"
-	"CopyQQ/routers/users"
-	"CopyQQ/routers/webpage"
-	"CopyQQ/routers/websocket"
+	"WebIM/global"
+	"WebIM/middlewares"
+	"WebIM/routers/users"
+	"WebIM/routers/webpage"
+	"WebIM/routers/websocket"
 	"github.com/gin-gonic/gin"
 )
 
@@ -20,13 +20,13 @@ var RouterGroupAPP RouterGroup
 func InitRouter() {
 	gin.SetMode(global.Config.System.Env) //设置了 Gin 框架的运行模式，根据全局配置中的环境参数来设置
 	router := gin.Default()
-	router.Use(middlewares.LogMiddleWare())
+	router.Use(middlewares.Cors())
 	//docs.SwaggerInfo.BasePath = "" //注册了一个用于 Swagger 文档展示的路由，可以通过该路由访问 Swagger 自动生成的 API 文档。
 	//router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	router.LoadHTMLGlob("templates/*")
+	router.LoadHTMLGlob("web/**/*")
+	//router.Static("/lib", "./web/lib") // 静态资源
 	routerGroup := router.Group("")
 	{
-		router.Static("/assets", "./assets")                          // 静态资源
 		RouterGroupAPP.WP.InitWebPageRouter(routerGroup)              // 用于提供网页界面跳转的路由与实现
 		RouterGroupAPP.Users.LoginRouter.InitLoginRouter(routerGroup) // 用于提供登录注册等相关功能的路由与实现
 		RouterGroupAPP.Users.UserRouter.InitUserRouter(routerGroup)   // 用于提供管理用户等功能的路由与实现

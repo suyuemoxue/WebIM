@@ -1,7 +1,7 @@
 package core
 
 import (
-	"CopyQQ/global"
+	"WebIM/global"
 	"context"
 	"github.com/go-redis/redis/v8"
 	"log"

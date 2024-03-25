@@ -1,8 +1,8 @@
 package core
 
 import (
-	"CopyQQ/global"
-	"CopyQQ/models"
+	"WebIM/global"
+	"WebIM/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

@@ -1,7 +1,7 @@
 package users
 
 import (
-	"CopyQQ/service/users"
+	"WebIM/service/users"
 	"github.com/gin-gonic/gin"
 )
 

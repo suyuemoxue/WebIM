@@ -1,8 +1,8 @@
 package users
 
 import (
-	"CopyQQ/global"
-	"CopyQQ/models"
+	"WebIM/global"
+	"WebIM/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
